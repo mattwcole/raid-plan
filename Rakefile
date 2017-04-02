@@ -6,7 +6,12 @@ end
 
 desc 'Run all unit tests'
 task :test do
-  echo 'TODO: Run all unit tests'
+  Dir.glob('test/**/*.csproj') do |test_project|
+    dotnet "test #{test_project}"
+  end
+
+  yarn 'lint'
+  yarn 'test'
 end
 
 def dotnet(args)

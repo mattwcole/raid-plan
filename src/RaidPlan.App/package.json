@@ -1,9 +1,13 @@
 {
-  "name": "RaidPlan.App",
+  "name": "raid-plan-app",
   "version": "0.1.0",
   "description": "Raid Plan client application",
   "main": "index.js",
   "repository": "https://github.com/mattwcole/raid-plan.git",
   "author": "Matt Cole",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "echo 'TODO Run JS linting'",
+    "test": "echo 'TODO: Run JS unit tests'"
+  }
 }
