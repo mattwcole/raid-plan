@@ -1,12 +1,22 @@
-﻿using System;
+﻿using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace RaidPlan.Host
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var webHostBuilder = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>();
+
+            using (var host = webHostBuilder.Build())
+            {
+                host.Run();
+            }
         }
     }
 }
