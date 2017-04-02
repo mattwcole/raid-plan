@@ -1,0 +1,9 @@
+{
+  "name": "RaidPlan.App",
+  "version": "0.1.0",
+  "description": "Raid Plan client application",
+  "main": "index.js",
+  "repository": "https://github.com/mattwcole/raid-plan.git",
+  "author": "Matt Cole",
+  "license": "MIT"
+}
