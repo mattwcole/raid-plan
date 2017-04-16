@@ -8,6 +8,8 @@ namespace RaidPlan.Host
 {
     public class Startup
     {
+        private readonly IHostingEnvironment _env;
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -15,6 +17,8 @@ namespace RaidPlan.Host
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
+            _env = env;
 
             Configuration = builder.Build();
         }
@@ -28,10 +32,19 @@ namespace RaidPlan.Host
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            loggerFactory
+                .AddConsole(Configuration.GetSection("Logging"))
+                .AddDebug();
 
-            app.UseMvc();
+            if (_env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app
+                .UseStatusCodePages()
+                .UseStaticFiles()
+                .UseMvcWithDefaultRoute();
         }
     }
 }
