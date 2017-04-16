@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  raidplan.host:
+    image: raidplan.host
+    build:
+      context: ./src/RaidPlan.Host
+      dockerfile: Dockerfile
