@@ -16,7 +16,7 @@ end
 
 desc 'Packages application into deployable'
 task :package do
-  yarn 'build -- --output-path ../RaidPlan.Host/wwwroot'
+  yarn 'build:prod'
   dotnet 'publish src/RaidPlan.Host -c Release'
 end
 

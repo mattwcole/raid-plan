@@ -7,9 +7,10 @@
   "author": "Matt Cole",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint webpack.config.babel.js src",
     "test": "echo 'TODO: Run JS unit tests'",
-    "build": "webpack"
+    "build": "webpack --output-path ../RaidPlan.Host/wwwroot",
+    "build:prod": "webpack -p --output-path ../RaidPlan.Host/wwwroot"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
