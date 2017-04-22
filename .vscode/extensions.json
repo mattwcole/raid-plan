@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ms-vscode.csharp",
+    "PeterJausovec.vscode-docker",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.editorconfig",
+    "DavidAnson.vscode-markdownlint"
+  ]
+}
