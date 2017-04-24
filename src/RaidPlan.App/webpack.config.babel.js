@@ -1,15 +1,15 @@
 import webpack from 'webpack';
 import path from 'path';
 
-export default {
+export default env => ({
   entry: {
     app: './src/index.jsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
+    filename: env.production ? '[name].[chunkhash].js' : '[name].js',
   },
-  devtool: 'cheap-module-source-map',
+  devtool: env.production ? 'source-map' : 'cheap-module-source-map',
   module: {
     rules: [
       {
@@ -19,7 +19,7 @@ export default {
       },
     ],
   },
-  plugins: [
+  plugins: !env.production ? [] : [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: module => module.context && module.context.includes('node_modules'),
@@ -28,4 +28,4 @@ export default {
       name: 'manifest',
     }),
   ],
-};
+});

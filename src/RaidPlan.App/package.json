@@ -10,7 +10,7 @@
     "lint": "eslint webpack.config.babel.js src --ext js jsx",
     "test": "echo 'TODO: Run JS unit tests'",
     "build": "webpack --output-path ../RaidPlan.Host/wwwroot",
-    "build:prod": "webpack -p --output-path ../RaidPlan.Host/wwwroot"
+    "build:prod": "webpack -p --env.production --output-path ../RaidPlan.Host/wwwroot"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
