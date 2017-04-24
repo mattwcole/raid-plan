@@ -1,5 +1,7 @@
 # Riad Plan
 
+[![Build Status](https://travis-ci.org/mattwcole/raidplan.svg?branch=master)](https://travis-ci.org/mattwcole/raidplan)
+
 ## Contributing
 
 ### Prerequisites
