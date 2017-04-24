@@ -1,6 +1,5 @@
 version: '2'
 
-language: generic
 services:
   ci-aspnetcore-build:
     image: microsoft/aspnetcore-build:1.0-1.1
