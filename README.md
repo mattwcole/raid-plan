@@ -1,6 +1,7 @@
 # Riad Plan
 
 [![Build Status](https://travis-ci.org/mattwcole/raidplan.svg?branch=master)](https://travis-ci.org/mattwcole/raidplan)
+[![dependencies Status](https://david-dm.org/mattwcole/raidplan/status.svg?path=src/RaidPlan.App)](https://david-dm.org/mattwcole/raidplan?path=src/RaidPlan.App)
 
 ## Contributing
 
@@ -17,7 +18,7 @@ To run the app you need to install NuGet packages, NPM packages, build the clien
 ```sh
 dotnet restore RiadPlan.sln
 cd src/RaidPlan.App
-yarn
+yarn install
 yarn build
 cd ../RaidPlan.Host
 dotnet run

@@ -4,7 +4,8 @@ services:
   - docker
 script:
   - docker-compose -f docker-compose.ci.build.yml up
-  - docker build src/RaidPlan.Host -t mattwcole/raidplan
+  - return $(docker-compose -f docker-compose.ci.build.yml ps -q | xargs docker inspect -f '{{ .State.ExitCode }}' | grep -v 0 | wc -l | tr -d ' ')
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build src/RaidPlan.Host -t mattwcole/raidplan
   - docker push mattwcole/raidplan
