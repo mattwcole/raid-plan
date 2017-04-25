@@ -7,7 +7,7 @@ export default env => ({
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: env.production ? '[name].[chunkhash].js' : '[name].js',
+    filename: env && env.production ? '[name].[chunkhash].js' : '[name].js',
   },
   devtool: env.production ? 'source-map' : 'cheap-module-source-map',
   module: {
