@@ -19,13 +19,15 @@ export default env => ({
       },
     ],
   },
-  plugins: !env.production ? [] : [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: module => module.context && module.context.includes('node_modules'),
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-    }),
-  ],
+  plugins: !env.production
+    ? []
+    : [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: module => module.context && module.context.includes('node_modules'),
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest',
+      }),
+    ],
 });

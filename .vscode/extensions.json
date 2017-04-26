@@ -4,6 +4,7 @@
     "PeterJausovec.vscode-docker",
     "dbaeumer.vscode-eslint",
     "EditorConfig.editorconfig",
-    "DavidAnson.vscode-markdownlint"
+    "DavidAnson.vscode-markdownlint",
+    "RobinMalfait.prettier-eslint-vscode"
   ]
 }

@@ -7,10 +7,21 @@
   "author": "Matt Cole",
   "license": "MIT",
   "scripts": {
+    "precommit": "lint-staged",
+    "format": "prettier-eslint --write webpack.config.babel.js \"src/**/*.{js,jsx}\"",
     "lint": "eslint webpack.config.babel.js src --ext js jsx",
     "test": "echo 'TODO: Run JS unit tests'",
     "build": "webpack --env.development --output-path ../RaidPlan.Host/wwwroot",
     "build:prod": "webpack -p --env.production --output-path ../RaidPlan.Host/wwwroot"
+  },
+  "lint-staged": {
+    "gitDir": "../../",
+    "linters": {
+      "*.{js,jsx}": [
+        "prettier-eslint --write",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "babel-core": "^6.24.1",
@@ -25,5 +36,10 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "webpack": "^2.4.1"
+  },
+  "devDependencies": {
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.0",
+    "prettier-eslint-cli": "^3.4.2"
   }
 }
