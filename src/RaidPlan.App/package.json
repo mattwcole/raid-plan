@@ -8,11 +8,11 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "format": "prettier-eslint --write webpack.config.babel.js \"src/**/*.{js,jsx}\"",
-    "lint": "eslint webpack.config.babel.js src --ext js jsx",
+    "format": "prettier-eslint --write webpack.config.js \"src/**/*.{js,jsx}\"",
+    "lint": "eslint webpack.config.js src --ext js jsx",
     "test": "echo 'TODO: Run JS unit tests'",
-    "build": "webpack --env.development --output-path ../RaidPlan.Host/wwwroot",
-    "build:prod": "webpack -p --env.production --output-path ../RaidPlan.Host/wwwroot"
+    "build": "webpack --output-path ../RaidPlan.Host/wwwroot",
+    "build:prod": "webpack -p --env production --output-path ../RaidPlan.Host/wwwroot"
   },
   "lint-staged": {
     "gitDir": "../../",
@@ -38,6 +38,7 @@
     "webpack": "^2.4.1"
   },
   "devDependencies": {
+    "aspnet-webpack": "^1.0.28",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "prettier-eslint-cli": "^3.4.2"
