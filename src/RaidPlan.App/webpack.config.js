@@ -1,5 +1,28 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const cssLoaders = [
+  {
+    loader: 'css-loader',
+    options: {
+      sourceMap: true,
+      modules: true,
+      importLoaders: 1,
+      localIdentName: '[name]__[local]___[hash:base64:5]',
+    },
+  },
+  {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+      sourceComments: true,
+      plugins() {
+        return [require('postcss-cssnext')]; // eslint-disable-line global-require
+      },
+    },
+  },
+];
 
 module.exports = function configure(env) {
   const isProduction = env === 'production';
@@ -22,7 +45,16 @@ module.exports = function configure(env) {
         {
           test: /\.jsx?$/,
           exclude: /(node_modules)/,
-          loader: 'babel-loader',
+          use: 'babel-loader',
+        },
+        {
+          test: /\.css$/,
+          use: isProduction
+            ? ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: cssLoaders,
+            })
+            : ['style-loader', ...cssLoaders],
         },
       ],
     },
@@ -34,6 +66,10 @@ module.exports = function configure(env) {
         }),
         new webpack.optimize.CommonsChunkPlugin({
           name: 'manifest',
+        }),
+        new ExtractTextPlugin({
+          filename: '[name].[contenthash].css',
+          allChunks: true,
         }),
       ]
       : [],

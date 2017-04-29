@@ -1,4 +1,4 @@
-# Riad Plan
+# Raid Plan
 
 [![Build Status](https://travis-ci.org/mattwcole/raidplan.svg?branch=master)](https://travis-ci.org/mattwcole/raidplan)
 [![dependencies Status](https://david-dm.org/mattwcole/raidplan/status.svg?path=src/RaidPlan.App)](https://david-dm.org/mattwcole/raidplan?path=src/RaidPlan.App)
