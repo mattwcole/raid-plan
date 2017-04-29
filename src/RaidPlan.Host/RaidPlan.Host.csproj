@@ -16,7 +16,15 @@
   <ItemGroup>
     <ProjectReference Include="..\RaidPlan.Api\RaidPlan.Api.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot" />
-  </ItemGroup>
+  <!--
+    Yarn target automaticall resores NPM packages during dotnet restore.
+    Does not work with Visual Studio or Project Rider package restore.
+    Excluded from running inside docker containers.
+
+    https://github.com/dotnet/cli/issues/5683
+    https://github.com/NuGet/Home/issues/4781
+  -->
+  <Target Name="Yarn" BeforeTargets="_GenerateRestoreProjectSpec" Condition="!Exists('/.dockerenv')">
+    <Exec Command="yarn install" WorkingDirectory="..\RaidPlan.App" />
+  </Target>
 </Project>

@@ -11,17 +11,14 @@
 - [.NET Core](https://www.microsoft.com/net/download)
 - [yarn](https://yarnpkg.com/lang/en/)
 
-### Running
+There is currently [an issue](https://github.com/dotnet/cli/issues/6178) with VS2017 docker projects breaking the dotnet CLI due to a missing SDK. Windows users can follow [this step](https://github.com/dotnet/cli/issues/6178#issuecomment-297040789) to work around. Linux/Mac users can copy the missing SDK from the [`aspnetcore-build` docker image](https://hub.docker.com/r/microsoft/aspnetcore-build/).
 
-To run the app you need to install NuGet packages, NPM packages, build the client app and run the host.
+### Running
 
 ```sh
 dotnet restore RiadPlan.sln
-cd src/RaidPlan.App
-yarn install
-yarn build
-cd ../RaidPlan.Host
+cd src/RaidPlan.Host
 dotnet run
 ```
 
-_Note that the `ASPNETCORE_ENVIRONMENT` environment variable should be set to `Development`. This can be achieved most easily by exporting it in `~/.bashrc` or similar._
+The `ASPNETCORE_ENVIRONMENT` environment variable must be set to `Development` when running locally. This can be achieved most easily by exporting it in `~/.bashrc` or similar.
