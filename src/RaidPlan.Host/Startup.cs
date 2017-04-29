@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RaidPlan.Host.AppSettings;
 
 namespace RaidPlan.Host
 {
@@ -25,7 +26,9 @@ namespace RaidPlan.Host
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        private IConfigurationRoot Configuration { get; }
+
+        private HostSettings HostSettings => Configuration.GetSection<HostSettings>("Host");
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -40,12 +43,16 @@ namespace RaidPlan.Host
 
             if (_env.IsDevelopment())
             {
-                app
-                    .UseDeveloperExceptionPage()
-                    .UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                app.UseDeveloperExceptionPage();
+
+                if (HostSettings.UseWebpackDevMiddleware)
+                {
+                    app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                     {
-                        ProjectPath = Path.Combine(env.ContentRootPath, "../RaidPlan.App")
+                        ProjectPath = Path.GetFullPath(Path.Combine(env.ContentRootPath, "../RaidPlan.App")),
+                        HotModuleReplacement = true
                     });
+                }
             }
 
             app

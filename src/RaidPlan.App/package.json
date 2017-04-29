@@ -35,12 +35,14 @@
     "eslint-plugin-react": "^6.10.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-hot-loader": "next",
     "webpack": "^2.4.1"
   },
   "devDependencies": {
     "aspnet-webpack": "^1.0.28",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
-    "prettier-eslint-cli": "^3.4.2"
+    "prettier-eslint-cli": "^3.4.2",
+    "webpack-hot-middleware": "^2.18.0"
   }
 }

@@ -6,26 +6,28 @@ module.exports = function configure(env) {
 
   return {
     entry: {
-      app: './src/index.jsx',
+      app: isProduction ? './src/index.jsx' : ['react-hot-loader/patch', './src/index.jsx'],
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       publicPath: '/',
       filename: isProduction ? '[name].[chunkhash].js' : '[name].js',
     },
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
     devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
     module: {
       rules: [
         {
-          test: /\.jsx+$/,
+          test: /\.jsx?$/,
           exclude: /(node_modules)/,
           loader: 'babel-loader',
         },
       ],
     },
-    plugins: !isProduction
-      ? []
-      : [
+    plugins: isProduction
+      ? [
         new webpack.optimize.CommonsChunkPlugin({
           name: 'vendor',
           minChunks: module => module.context && module.context.includes('node_modules'),
@@ -33,6 +35,7 @@ module.exports = function configure(env) {
         new webpack.optimize.CommonsChunkPlugin({
           name: 'manifest',
         }),
-      ],
+      ]
+      : [],
   };
 };
