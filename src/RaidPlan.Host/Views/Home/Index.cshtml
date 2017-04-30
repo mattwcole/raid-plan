@@ -12,15 +12,19 @@
   </head>
   <body>
     <div id="app"></div>
-    @if (Environment.IsDevelopment()) {
-      <script src="/app.js"></script>
-    }
-    else {
-      <script asp-src-include="/manifest.*.js"></script>
-      <script asp-src-include="/vendor.*.js"></script>
-      <script asp-src-include="/app.*.js"></script>
-      <link rel="stylesheet" asp-href-include="/vendor.*.css"/>
-      <link rel="stylesheet" asp-href-include="/app.*.css"/>
-    }
+@if (Environment.IsDevelopment())
+{
+    <script src="/app.js"></script>
+}
+else
+{
+    <script asp-src-include="/manifest.*.js"></script>
+    <script asp-src-include="/vendor.*.js"></script>
+    <script asp-src-include="/app.*.js"></script>
+    <link rel="stylesheet" asp-href-include="/vendor.*.css"/>
+    <link rel="stylesheet" asp-href-include="/app.*.css"/>
+}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
   </body>
 </html>

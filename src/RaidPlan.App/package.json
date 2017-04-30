@@ -8,20 +8,15 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "format": "prettier-eslint --write \"src/**/*.{js,jsx}\"",
-    "lint": "eslint src --ext js jsx",
+    "format": "npm-run-add -pc format:js format:css",
+    "format:js": "prettier-eslint --write \"**/*.{js,jsx}\"",
+    "format:css": "stylefmt -r \"src/**/*.css\"",
+    "lint": "npm-run-all -pc lint:js lint:css",
+    "lint:js": "eslint \"**/*.{js,jsx}\"",
+    "lint:css": "stylelint \"src/**/*.css\"",
     "test": "echo 'TODO: Run JS unit tests'",
     "build": "webpack --output-path ../RaidPlan.Host/wwwroot",
     "build:prod": "webpack -p --env production --output-path ../RaidPlan.Host/wwwroot"
-  },
-  "lint-staged": {
-    "gitDir": "../../",
-    "linters": {
-      "*.{js,jsx}": [
-        "prettier-eslint --write",
-        "git add"
-      ]
-    }
   },
   "dependencies": {
     "babel-core": "^6.24.1",
@@ -35,6 +30,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "extract-text-webpack-plugin": "^2.1.0",
+    "npm-run-all": "^4.0.2",
     "postcss": "^5.2.17",
     "postcss-cssnext": "^2.10.0",
     "postcss-loader": "^1.3.3",
@@ -44,6 +40,8 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "react-toolbox": "^2.0.0-beta.8",
     "style-loader": "^0.16.1",
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0",
     "webpack": "^2.4.1"
   },
   "devDependencies": {
@@ -51,6 +49,7 @@
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "prettier-eslint-cli": "^3.4.2",
+    "stylefmt": "^5.3.2",
     "webpack-hot-middleware": "^2.18.0"
   }
 }

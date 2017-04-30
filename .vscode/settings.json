@@ -1,3 +1,13 @@
 {
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "css.validate": false,
+
+  // .stylelintrc.json config currently has to be in the workspace root until the following issue is fixed.
+  // https://github.com/shinnn/vscode-stylelint/issues/57
+  // To temporarily work around, add the absolute path to your user settings.
+  //
+  // "stylelint.config": {
+  //   "extends": "/absolute/path/to/your/conf/.stylelintrc.json"
+  // }
+  "stylelint.enable": true
 }

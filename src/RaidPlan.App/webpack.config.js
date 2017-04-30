@@ -17,14 +17,11 @@ const cssLoaders = [
     options: {
       sourceMap: true,
       sourceComments: true,
-      plugins() {
-        return [require('postcss-cssnext')]; // eslint-disable-line global-require
-      },
     },
   },
 ];
 
-module.exports = function configure(env) {
+module.exports = (env) => {
   const isProduction = env === 'production';
 
   return {

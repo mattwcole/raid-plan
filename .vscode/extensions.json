@@ -3,8 +3,10 @@
     "ms-vscode.csharp",
     "PeterJausovec.vscode-docker",
     "dbaeumer.vscode-eslint",
+    "RobinMalfait.prettier-eslint-vscode",
+    "shinnn.stylelint",
+    "mrmlnc.vscode-stylefmt",
     "EditorConfig.editorconfig",
-    "DavidAnson.vscode-markdownlint",
-    "RobinMalfait.prettier-eslint-vscode"
+    "DavidAnson.vscode-markdownlint"
   ]
 }
