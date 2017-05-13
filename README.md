@@ -16,7 +16,7 @@ There is currently [an issue](https://github.com/dotnet/cli/issues/6178) with VS
 ### Running
 
 ```sh
-dotnet restore RiadPlan.sln
+dotnet restore RaidPlan.sln
 cd src/RaidPlan.Host
 dotnet run
 ```
